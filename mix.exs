@@ -42,7 +42,7 @@ defmodule Microformats2.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:floki, "~> 0.7.2"},
+    [{:floki, "~> 0.11.0"},
      {:httpotion, "~> 3.0.0"}]
   end
 end
