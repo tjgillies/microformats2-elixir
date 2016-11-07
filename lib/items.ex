@@ -1,4 +1,5 @@
 defmodule Microformats2.Items do
+  require Logger
   def parse(nodes, doc, url, items \\ [])
   def parse([head | tail], doc, url, items) when is_bitstring(head), do: parse(tail, doc, url, items)
   def parse([head | tail], doc, url, items), do: parse(tail, doc, url, parse(head, doc, url, items))
@@ -178,7 +179,9 @@ defmodule Microformats2.Items do
       ""
     end
 
-    Enum.reduce(children, text <> txt, fn(child, acc) ->
+    Logger.debug inspect [:first, children, text, txt]
+    Enum.reduce(children, "#{text}#{txt}", fn(child, acc) ->
+      Logger.debug inspect [:second, child, acc]
       text_content(child, acc)
     end)
   end
